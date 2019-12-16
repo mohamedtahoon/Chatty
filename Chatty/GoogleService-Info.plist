@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>55791124423-30qpv8s9l0b59e07t8cgqimnhlpnpimh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.55791124423-30qpv8s9l0b59e07t8cgqimnhlpnpimh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBke4lOVPj2x0qSkd4Dj1E7o_3PsjNQYpE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>55791124423</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Tahoon.Chatty</string>
+	<key>PROJECT_ID</key>
+	<string>chatty-c5f93</string>
+	<key>STORAGE_BUCKET</key>
+	<string>chatty-c5f93.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:55791124423:ios:948f55597ae6f79d1523e2</string>
+	<key>DATABASE_URL</key>
+	<string>https://chatty-c5f93.firebaseio.com</string>
+</dict>
+</plist>
