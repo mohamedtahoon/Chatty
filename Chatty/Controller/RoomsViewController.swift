@@ -19,7 +19,10 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         tableViewRooms.delegate = self
         tableViewRooms.dataSource = self
-        tableViewRooms.separatorColor = .white
+        tableViewRooms.separatorColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+       // tableViewRooms.separatorStyle = .none
+
+        
         
         observeRooms()
     }
@@ -105,7 +108,8 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.text = room.roomName
         cell.textLabel?.textColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         cell.textLabel?.font = .systemFont(ofSize: 22)
-        
+        cell.accessoryView = UIImageView(image: UIImage(named: "1.png"))
+
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -131,7 +135,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             hideTableEmptyMessage()
             return 1
         } else {
-            self.showTableEmptyMessage(message: "You don't have any Chat Rooms yet,\n Click on (+) to add  \n a Rooms.")
+            self.showTableEmptyMessage(message: "You don't have any Chat Rooms yet,\n Click on (+) to add  \n a Room.")
             return 0
         }
     }

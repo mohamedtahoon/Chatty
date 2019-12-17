@@ -45,6 +45,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         sendButton.isEnabled = false
         sendButton.alpha = 0.5
         
+        title = rooms?.roomName
         
     }
     
