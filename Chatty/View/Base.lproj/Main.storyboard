@@ -279,7 +279,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="vhW-a0-gOt">
                             <color key="tintColor" red="0.72805172200000001" green="0.095836944879999997" blue="0.094071410600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <action selector="searchBtn:" destination="Xw9-AR-gfk" id="GuH-U6-0NG"/>
+                                <action selector="addRoomsButton:" destination="Xw9-AR-gfk" id="gdV-dM-vrb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

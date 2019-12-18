@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class RegisterViewController: UIViewController {
     
@@ -21,7 +22,7 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func registerPressed(_ sender: Any) {
-        
+        SVProgressHUD.show()
         Auth.auth().createUser(withEmail: userEmail.text!, password: userPassword.text!) { (result, error) in
             if (self.userEmail.text?.isEmpty == true || self.userPassword.text?.isEmpty == true){
                 self.displayAlert(errorText: "Please Fill Empty Fields")
@@ -38,23 +39,16 @@ class RegisterViewController: UIViewController {
                 user.setValue(dataArr)
                 
                 print("..... User Added .....")
-                
-                //let roomScreen = self.storyboard?.instantiateViewController(identifier: "Room") as! RoomsViewController
-                //self.navigationController?.pushViewController(roomScreen, animated: false)
-                
                 self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                
+                SVProgressHUD.dismiss()
             }
-            
         }
-        
     }
     
     
     func displayAlert(errorText: String){
         let alert = UIAlertController.init(title: "Error", message: errorText, preferredStyle: .alert)
-        self.present(alert,animated: true,completion: nil)
-        
+        self.present(alert,animated: true,completion: nil)   
         alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
     }
 }

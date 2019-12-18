@@ -8,9 +8,10 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class SignInViewController: UIViewController {
-
+    
     
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
@@ -22,21 +23,15 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func signInPressed(_ sender: Any) {
+        SVProgressHUD.show()
         Auth.auth().signIn(withEmail: userEmailTextField.text!,password: userPasswordTextField.text!) { (result, error) in
             if error != nil {
                 print(error!)
             }else{
                 self.dismiss(animated: true, completion: nil)
                 print("Logged In ........")
+                SVProgressHUD.dismiss()
             }
-            
         }
     }
-    
-    
-    
-    
-
-
-
 }

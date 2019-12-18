@@ -69,11 +69,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func keyboardWillShow(notification: Notification) {
         print("Notification: Keyboard will show")
-
+        
         messageTableView.setBottomInset(to: 0.0)
         if messages.count > 0{
-        scrollToBottom()
-        
+            scrollToBottom()
+            
         }
     }
     
@@ -170,7 +170,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-  
+    
     
     func getUserWithId(id: String, completion: @escaping (_ userName: String?)-> ()){
         let databaseRef = Database.database().reference()
@@ -220,7 +220,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
                 
                 let message = Message.init(messageKey: snapshot.key, sender: senderName, messageBody: text, userId: userId)
-                
+    
                 self.messages.append(message)
                 self.configureTableView()
                 self.messageTableView.reloadData()
@@ -238,7 +238,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         catch{
             print("Error while Logging Out!!")
         }
-        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -252,9 +251,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return true
     }
-    
-    
-    
 }
 
 extension UITableView {

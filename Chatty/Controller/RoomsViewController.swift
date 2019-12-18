@@ -20,10 +20,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableViewRooms.delegate = self
         tableViewRooms.dataSource = self
         tableViewRooms.separatorColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-       // tableViewRooms.separatorStyle = .none
-
-        
-        
+        // tableViewRooms.separatorStyle = .none
         observeRooms()
     }
     
@@ -34,6 +31,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func observeRooms(){
+        SVProgressHUD.show()
         let dataReference = Database.database().reference()
         dataReference.child("rooms").observe(.childAdded) { (snapshot) in
             if let dataArr = snapshot.value as? [String: Any]{
@@ -42,13 +40,12 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let room = Room.init(roomId: snapshot.key, roomName: roomName)
                     self.rooms.append(room)
                     self.tableViewRooms.reloadData()
-                    
                 }
             }
         }
     }
     
-    @IBAction func searchBtn(_ sender: Any) {
+    @IBAction func addRoomsButton(_ sender: UIBarButtonItem) {
         
         let alert = UIAlertController(title: "Add New Chat Room", message: "", preferredStyle: .alert)
         
@@ -73,7 +70,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         })
         
         
-        // Cancel button
+        // Cancel button of Alert
         let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in })
         
         // Add 1 textField and cutomize it
@@ -83,14 +80,11 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             textField.autocorrectionType = .default
             textField.placeholder = "Add New Chat Room"
             textField.clearButtonMode = .whileEditing
-            
-            
         }
         
         // Add action buttons and present the Alert
         alert.addAction(submitAction)
         alert.addAction(cancel)
-        //present(alert, animated: true, completion: nil)
         self.present(alert, animated: true, completion: {() -> Void in
             alert.view.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         })
@@ -109,7 +103,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.textColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         cell.textLabel?.font = .systemFont(ofSize: 22)
         cell.accessoryView = UIImageView(image: UIImage(named: "1.png"))
-
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -132,6 +126,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if rooms.count > 0 {
+            SVProgressHUD.dismiss()
             hideTableEmptyMessage()
             return 1
         } else {
@@ -140,7 +135,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-  
+    
     
     func showTableEmptyMessage(message:String) {
         let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height))
@@ -178,6 +173,5 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let formScreen = self.storyboard?.instantiateViewController(identifier: "login") as! SignInViewController
         self.present(formScreen, animated: true, completion: nil)
     }
-    
 }
 
