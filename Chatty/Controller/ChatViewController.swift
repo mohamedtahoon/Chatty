@@ -47,6 +47,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         title = rooms?.roomName
         
+        self.view.layoutIfNeeded()
+        
     }
     
     func scrollToBottom(){
@@ -69,7 +71,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func keyboardWillShow(notification: Notification) {
         print("Notification: Keyboard will show")
-        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+            self.heightConstraint.constant = keyboardHeight + 50
+        self.view.layoutIfNeeded()
+        }
         messageTableView.setBottomInset(to: 0.0)
         if messages.count > 0{
             scrollToBottom()
@@ -124,9 +131,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.5) {
-            self.heightConstraint.constant = 369
-            self.view.layoutIfNeeded()
+            
         }
+    
     }
     
     
